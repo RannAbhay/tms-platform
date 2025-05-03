@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@import "tw-animate-css";
+
+@tailwind utilities;
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-jetbrainsMono: var(--font-jetbrainsMono);
+  --color-accent: var(--accent);
+  --color-primary: var(--primary);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent-hover: var(--accent-hover);
+  --color-primary-hover: var(--primary-hover);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #212121;
+  --accent: #3ebfbb;
+  --primary: #a90c50;
+  --accent-foreground: #2c2c2c;
+  --primary-foreground: #ffffff;
+  --accent-hover: #218381;
+  --primary-hover: #f4c1d4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #121212;
+    --foreground: #e0e0e0;
+    --accent: #3ebfbb;
+    --primary: #a90c50;
+    --accent-foreground: #2c2c2c;
+    --primary-foreground: #2c2c2c;
+    --accent-hover: #218381;
+    --primary-hover: #5e1d3c;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-jetbrainsMono);
+}
