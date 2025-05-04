@@ -6,8 +6,10 @@ const Header = () => {
       <div className="container mx-auto px-5 flex justify-between items-center">
         {/* lgoo */}
 
-        <Link href="/dashboard">
-          <h1 className="text-4xl font-semibold">TMS</h1>
+        <Link href="/">
+          <h1 className="text-4xl font-semibold">
+            Rohan Rai<span className="text-accent">.</span>
+          </h1>
         </Link>
       </div>
     </header>
