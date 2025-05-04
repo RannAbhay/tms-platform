@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const LoginHeader = () => {
   return (
-    <header className="py-4 xl:py-8 text-primary-foreground">
+    <header className="py-4 xl:py-8 text-accent">
       <div className="container mx-auto px-5 flex justify-center items-center">
         {/* lgoo */}
 
