@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { TabsContent } from "@/components/ui/tabs";
 
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
+
 const initialState = {
   email: "",
   password: "",
@@ -16,6 +18,8 @@ const initialState = {
 const SignupComponent = () => {
   const [signup, setSignup] = useState(initialState);
   const [canSignup, setCanSignup] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
     setSignup((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -48,25 +52,53 @@ const SignupComponent = () => {
           <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
             Password
           </label>
-          <Input
-            name="password"
-            value={signup.password}
-            onChange={handleChange}
-            className="min-w-[270px] sm:w-[450px]"
-            placeholder="Enter your Password..."
-          />
+          <div className="relative inline">
+            <Input
+              name="password"
+              value={signup.password}
+              type={showPassword ? "text" : "password"}
+              onChange={handleChange}
+              className="min-w-[270px] sm:w-[450px]"
+              placeholder="Enter your Password..."
+            />
+            <Button
+              className="absolute inset-y-0 right-0 flex cursor-pointer items-center p-1 my-auto"
+              variant="ghost"
+              size="sm"
+              type="button"
+              onClick={() => {
+                setShowPassword(!showPassword);
+              }}
+            >
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
+            </Button>
+          </div>
         </div>
         <div className="flex flex-col peer text-left gap-2 mb-4">
           <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
             Confirm Password
           </label>
-          <Input
-            name="confirmPassword"
-            value={signup.confirmPassword}
-            onChange={handleChange}
-            className="min-w-[270px] sm:w-[450px]"
-            placeholder="Enter your Password..."
-          />
+          <div className="relative inline">
+            <Input
+              name="confirmPassword"
+              value={signup.confirmPassword}
+              type={showConfirmPassword ? "text" : "password"}
+              onChange={handleChange}
+              className="min-w-[270px] sm:w-[450px]"
+              placeholder="Confirm your Password..."
+            />
+            <Button
+              className="absolute inset-y-0 right-0 flex cursor-pointer items-center p-1 my-auto"
+              variant="ghost"
+              size="sm"
+              type="button"
+              onClick={() => {
+                setShowConfirmPassword(!showConfirmPassword);
+              }}
+            >
+              {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
+            </Button>
+          </div>
         </div>
         <Button
           className="w-full"

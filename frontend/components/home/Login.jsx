@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { TabsContent } from "@/components/ui/tabs";
 
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
+
 const initialStateLogin = {
   email: "",
   password: "",
@@ -15,6 +17,7 @@ const initialStateLogin = {
 const LoginComponoent = () => {
   const [login, setLogin] = useState(initialStateLogin);
   const [canLogin, setCanLogin] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     setLogin((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -37,6 +40,7 @@ const LoginComponoent = () => {
           <Input
             name="email"
             value={login.email}
+            type="email"
             onChange={handleChange}
             className="min-w-[270px] sm:w-[450px]"
             placeholder="Enter your Email..."
@@ -46,13 +50,27 @@ const LoginComponoent = () => {
           <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
             Password
           </label>
-          <Input
-            name="password"
-            value={login.password}
-            onChange={handleChange}
-            className="min-w-[270px] sm:w-[450px]"
-            placeholder="Enter your Password..."
-          ></Input>
+          <div className="relative inline">
+            <Input
+              name="password"
+              value={login.password}
+              type={showPassword ? "text" : "password"}
+              onChange={handleChange}
+              className="min-w-[270px] sm:w-[450px]"
+              placeholder="Enter your Password..."
+            />
+            <Button
+              className="absolute inset-y-0 right-0 flex cursor-pointer items-center p-1 my-auto"
+              variant="ghost"
+              size="sm"
+              type="button"
+              onClick={() => {
+                setShowPassword(!showPassword);
+              }}
+            >
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
+            </Button>
+          </div>
         </div>
         <Button
           className="w-full"
